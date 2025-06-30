@@ -38,6 +38,7 @@ class OllamaService(BaseService):
 
         schema = response_schema.model_json_schema()
         format_schema = {
+            "$defs": schema["$defs"] if "$defs" in schema else {},
             "type": "object",
             "properties": schema["properties"],
             "required": schema["required"],
